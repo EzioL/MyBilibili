@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ezio.bilibili">
+          package="com.ezio.bilibili">
 
     <application
         android:allowBackup="true"
@@ -11,11 +11,12 @@
 
         <activity
             android:name=".SplashActivity"
+
             android:theme="@style/Splash">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+                <action android:name="android.intent.action.MAIN"/>
 
-                <category android:name="android.intent.category.LAUNCHER" />
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
         <activity
@@ -23,7 +24,7 @@
             android:launchMode="singleTask"
             android:screenOrientation="portrait"
             android:theme="@style/MainActivityColorTranslucentTheme"
-            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan"/>
 
     </application>
 

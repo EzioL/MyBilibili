@@ -1,22 +1,29 @@
 package com.ezio.bilibili;
 
+
+import android.app.Fragment;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
+
+
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.ezio.bilibili.base.RxBaseActivity;
+import com.ezio.bilibili.home.HomePageFragment;
 import com.ezio.bilibili.widget.CircleImageView;
 
 import butterknife.Bind;
-import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+
+public class MainActivity extends RxBaseActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     @Bind(R.id.drawer_layout)
@@ -24,22 +31,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Bind(R.id.navigation_view)
     NavigationView mNavigationView;
 
+    private Fragment[] fragments;
+
+    private int currentTabIndex;
+
+    private int index;
+
+    private long exitTime;
+    private HomePageFragment mHomePageFragment;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
-        initView();
+    public int getLayoutId() {
+        return R.layout.activity_main;
     }
 
-    private void initView() {
+    @Override
+    public void initToolBar() {
+    }
+
+    @Override
+    public void initViews(Bundle savedInstanceState) {
         //初始化Fragment
         initFragments();
         //初始化侧滑菜单
         initNavigationView();
     }
 
+
     private void initFragments() {
+        // 添加显示第一个fragment
+        mHomePageFragment = HomePageFragment.newInstance();
+
+
+        getFragmentManager()
+                .beginTransaction()
+                .add(R.id.container, mHomePageFragment)
+                .show(mHomePageFragment).commit();
 
     }
 
@@ -51,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         TextView mUserSign = (TextView) headerView.findViewById(R.id.user_other_info);
         ImageView mSwitchMode = (ImageView) headerView.findViewById(R.id.iv_head_switch_mode);
         //设置头像
-        mUserAvatarView.setImageResource(R.drawable.ic_hotbitmapgg_avatar);
+        mUserAvatarView.setImageResource(R.drawable.ic_ezio_avatar);
         //设置用户名 签名
         mUserName.setText(getResources().getText(R.string.ezio));
         mUserSign.setText(getResources().getText(R.string.about_user_head_layout));
@@ -60,6 +87,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     }
 
+    /*
+     DrawerLayout侧滑菜单开关
+    */
+    public void toggleDrawer() {
+
+        if (mDrawerLayout.isDrawerOpen(GravityCompat.START)) {
+            mDrawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            mDrawerLayout.openDrawer(GravityCompat.START);
+        }
+    }
 
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
