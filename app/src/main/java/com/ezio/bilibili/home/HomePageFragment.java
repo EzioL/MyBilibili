@@ -38,7 +38,7 @@ public class HomePageFragment extends RxLazyFragment {
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
     @Bind(R.id.sliding_tabs)
-    SlidingTabLayout mSlidingTabs;
+    SlidingTabLayout mSlidingTab;
     @Bind(R.id.view_pager)
     NoScrollViewPager mViewPager;
     @Bind(R.id.search_view)
@@ -98,7 +98,7 @@ public class HomePageFragment extends RxLazyFragment {
     }
 
     private void initViewPager() {
-
+        mSlidingTab.setViewPager(mViewPager);
     }
 
     @Override
