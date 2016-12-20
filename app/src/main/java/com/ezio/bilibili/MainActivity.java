@@ -1,14 +1,13 @@
 package com.ezio.bilibili;
 
 
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 
 
+import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.view.MenuItem;
@@ -62,8 +61,8 @@ public class MainActivity extends RxBaseActivity implements NavigationView.OnNav
         // 添加显示第一个fragment
         mHomePageFragment = HomePageFragment.newInstance();
 
-
-        getFragmentManager()
+        // 添加显示第一个fragment
+        getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.container, mHomePageFragment)
                 .show(mHomePageFragment).commit();

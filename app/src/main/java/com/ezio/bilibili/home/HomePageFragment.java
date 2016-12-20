@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 
 import com.ezio.bilibili.MainActivity;
 import com.ezio.bilibili.R;
+import com.ezio.bilibili.adapter.HomePagerAdapter;
 import com.ezio.bilibili.base.RxLazyFragment;
 import com.ezio.bilibili.widget.CircleImageView;
 import com.ezio.bilibili.widget.NoScrollViewPager;
@@ -26,7 +27,7 @@ import butterknife.OnClick;
 
 /**
  * Author：Ezio on 2016/12/19.
- * <p/>
+ * <p>
  * 首页模块主界面
  */
 public class HomePageFragment extends RxLazyFragment {
@@ -98,7 +99,12 @@ public class HomePageFragment extends RxLazyFragment {
     }
 
     private void initViewPager() {
+        HomePagerAdapter mHomeAdapter = new HomePagerAdapter(getChildFragmentManager(),
+                getApplicationContext());
+        mViewPager.setOffscreenPageLimit(5);
+        mViewPager.setAdapter(mHomeAdapter);
         mSlidingTab.setViewPager(mViewPager);
+        mViewPager.setCurrentItem(1);
     }
 
     @Override
