@@ -19,7 +19,7 @@ public class HomeRecommendFragment extends RxLazyFragment {
     }
     @Override
     public int getLayoutResId() {
-        return R.layout.fragment_recommend;
+        return R.layout.fragment_home_recommend;
     }
 
     @Override

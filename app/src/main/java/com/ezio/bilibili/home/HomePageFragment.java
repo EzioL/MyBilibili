@@ -69,7 +69,7 @@ public class HomePageFragment extends RxLazyFragment {
     private void initToolBar() {
         mToolbar.setTitle("");
         ((MainActivity) getActivity()).setSupportActionBar(mToolbar);
-        mToolbarUserAvatar.setImageResource(R.drawable.ic_ezio_avatar);
+        mToolbarUserAvatar.setImageResource(R.drawable.ic_avatar1);
     }
 
     private void initSearchView() {
