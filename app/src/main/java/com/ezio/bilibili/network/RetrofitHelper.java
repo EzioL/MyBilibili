@@ -1,13 +1,17 @@
 package com.ezio.bilibili.network;
 
+import android.util.Log;
+
 import com.ezio.bilibili.BilibiliApp;
+import com.ezio.bilibili.network.api.BiliApiService;
+import com.ezio.bilibili.network.api.BiliAppService;
+import com.ezio.bilibili.network.api.LiveService;
 import com.ezio.bilibili.utils.CommonUtil;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
 
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 
 import okhttp3.Cache;
 import okhttp3.CacheControl;
@@ -19,6 +23,7 @@ import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
+import rx.functions.Func1;
 
 /**
  * Author：Ezio on 2016/12/20.
@@ -30,6 +35,37 @@ public class RetrofitHelper {
 
     static {
         initOkHttpClient();
+    }
+
+    public static LiveService getLiveAPI() {
+
+        return createApi(LiveService.class, ApiConstants.LIVE_BASE_URL);
+    }
+
+    public static BiliAppService getBiliAppAPI() {
+
+        return createApi(BiliAppService.class, ApiConstants.APP_BASE_URL);
+    }
+
+
+    /**
+     * 根据传入的baseUrl，和api创建retrofit
+     *
+     * @param clazz
+     * @param baseUrl
+     * @param <T>
+     * @return
+     */
+    private static <T> T createApi(Class<T> clazz, String baseUrl) {
+
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl(baseUrl)
+                .client(mOkHttpClient)
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+
+        return retrofit.create(clazz);
     }
 
 
@@ -53,11 +89,13 @@ public class RetrofitHelper {
                             .addNetworkInterceptor(new CacheInterceptor())
                             .addNetworkInterceptor(new StethoInterceptor())
                             .retryOnConnectionFailure(true)
+
                             .connectTimeout(30, TimeUnit.SECONDS)
                             .writeTimeout(20, TimeUnit.SECONDS)
                             .readTimeout(20, TimeUnit.SECONDS)
-                            .addInterceptor(new UserAgentInterceptor())
                             .build();
+                    //
+                    //  .addInterceptor(new UserAgentInterceptor())
                 }
             }
         }
@@ -117,6 +155,18 @@ public class RetrofitHelper {
                         .build();
             }
             return response;
+        }
+    }
+
+
+    public static class HttpResultFunc<T> implements Func1<HttpResult<T>, T> {
+        @Override
+        public T call(HttpResult<T> httpResult) {
+            Log.e("error", httpResult.getData().toString() + "");
+            if (httpResult.getCode() != 0) {
+                // throw new ApiException(httpResult.getCode());
+            }
+            return httpResult.getData();
         }
     }
 }

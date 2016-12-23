@@ -1,5 +1,8 @@
 apply plugin: 'com.android.application'
-
+repositories {
+    jcenter()
+    maven { url "https://jitpack.io" }
+}
 android {
     compileSdkVersion 24
     buildToolsVersion "25.0.1"
@@ -29,8 +32,8 @@ dependencies {
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'io.reactivex:rxjava:1.0.14'
     compile 'io.reactivex:rxandroid:1.0.1'
-    compile 'com.squareup.okhttp3:okhttp:3.2.0'
-    compile 'com.squareup.okhttp3:logging-interceptor:3.2.0'
+    compile 'com.squareup.okhttp3:okhttp:3.4.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.4.1'
     compile 'com.squareup.retrofit2:retrofit:2.0.2'
     compile 'com.squareup.retrofit2:converter-gson:2.0.2'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.0.2'
@@ -41,5 +44,6 @@ dependencies {
     compile 'com.facebook.stetho:stetho-okhttp3:1.4.2'
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.0@aar'
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
+    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.6.9'
 
 }
