@@ -31,7 +31,7 @@
     <dimen name="load_more_layout_circle_progress_width">2dp</dimen>
 
     <!--banner height size-->
-    <dimen name="general_banner_height">126dp</dimen>
+    <dimen name="general_banner_height">128dp</dimen>
 
     <!--video item common strip size-->
     <dimen name="video_item_layout_height">90dp</dimen>

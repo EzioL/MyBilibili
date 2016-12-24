@@ -1,12 +1,10 @@
 package com.ezio.bilibili.network.api;
 
 
-import com.ezio.bilibili.entity.LiveAppIndexInfo;
+import com.ezio.bilibili.entity.live.LiveAppIndexInfo;
 import com.ezio.bilibili.network.HttpResult;
 
-import okhttp3.ResponseBody;
 import retrofit2.http.GET;
-import retrofit2.http.Query;
 import rx.Observable;
 
 /**

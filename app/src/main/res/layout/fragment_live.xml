@@ -10,4 +10,5 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:text="直播"/>
+    <include layout="@layout/layout_recyclerview"/>
 </RelativeLayout>

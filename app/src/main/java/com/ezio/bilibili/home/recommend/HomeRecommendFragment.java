@@ -45,7 +45,7 @@ public class HomeRecommendFragment extends RxLazyFragment {
 //        initRefreshLayout();
 //        initRecyclerView();
 //        isPrepared = false;
-        //loadData();
+     //   loadData();
     }
 
     @Override
