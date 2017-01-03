@@ -10,7 +10,7 @@
         <item>@string/section_discover</item>
     </string-array>
 
-    <string name="app_name">哔哩哔哩</string>
+    <string name="app_name">我的哔哩哔哩</string>
     <string name="info_play_times_format">%d</string>
     <string name="info_reviews_format">%d</string>
     <string name="ezio">Ezio</string>

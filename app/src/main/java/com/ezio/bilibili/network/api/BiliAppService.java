@@ -1,6 +1,7 @@
 package com.ezio.bilibili.network.api;
 
 import com.ezio.bilibili.entity.RecommendBannerInfo;
+import com.ezio.bilibili.entity.recommend.RecommendInfo;
 import com.ezio.bilibili.network.HttpResult;
 
 import retrofit2.http.GET;
@@ -14,16 +15,13 @@ public interface BiliAppService {
 
     /**
      * 首页推荐数据
-     *
-     * @return
      */
-    // @GET("x/show/old?platform=android&device=&build=412001")
-    // Observable<RecommendInfo> getRecommendedInfo();
+     @GET("x/show/old?platform=android&device=&build=412001")
+     Observable<HttpResult<RecommendInfo[]>> getRecommendedInfo();
 
     /**
      * 首页推荐banner
      *
-     * @return
      */
     @GET("x/banner?plat=4&build=411007&channel=bilih5")
     Observable<HttpResult<RecommendBannerInfo[]>> getRecommendedBannerInfo();

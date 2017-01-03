@@ -5,9 +5,7 @@ import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 
 /**
- * Created by hcc on 16/9/20 00:47
- * 100332338@qq.com
- * <p/>
+ *
  * 重写Viewpager解决点击tab去除滑动动画效果的问题
  */
 public class NoScrollViewPager extends ViewPager

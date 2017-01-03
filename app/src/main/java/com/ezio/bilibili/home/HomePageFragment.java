@@ -101,7 +101,7 @@ public class HomePageFragment extends RxLazyFragment {
     private void initViewPager() {
         HomePagerAdapter mHomeAdapter = new HomePagerAdapter(getChildFragmentManager(),
                 getApplicationContext());
-        mViewPager.setOffscreenPageLimit(5);
+        mViewPager.setOffscreenPageLimit(5);//设置缓存view 的个数（实际有6个，缓存5个+正在显示的1个）
         mViewPager.setAdapter(mHomeAdapter);
         mSlidingTab.setViewPager(mViewPager);
         mViewPager.setCurrentItem(1);

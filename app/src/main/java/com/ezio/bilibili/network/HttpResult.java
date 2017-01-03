@@ -13,6 +13,7 @@ public class HttpResult<T> {
     private int code;
     private String message;
     private T data;
+    private T result;
 
     public int getCode() {
         return code;
@@ -36,5 +37,13 @@ public class HttpResult<T> {
 
     public void setData(T data) {
         this.data = data;
+    }
+
+    public T getResult() {
+        return result;
+    }
+
+    public void setResult(T result) {
+        this.result = result;
     }
 }
