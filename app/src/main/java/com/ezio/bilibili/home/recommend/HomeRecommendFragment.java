@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.ezio.bilibili.R;
 import com.ezio.bilibili.adapter.HomeRecommendAdapter;
@@ -22,14 +23,12 @@ import com.ezio.bilibili.widget.banner.BannerView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Action1;
 import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
@@ -44,6 +43,7 @@ public class HomeRecommendFragment extends RxLazyFragment {
     SwipeRefreshLayout mSwipeRefreshLayout;
     View mHeadBannerView;
     BannerView mBannerView;
+    View mErrorView;
     private List<RecommendBannerInfo> mBannerInfoList = new ArrayList<>();
 
     public static HomeRecommendFragment newInstance() {
@@ -112,12 +112,18 @@ public class HomeRecommendFragment extends RxLazyFragment {
         mAdapter = new HomeRecommendAdapter(null);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
         mRecyclerView.setAdapter(mAdapter);
+
     }
 
     private void initBannerView() {
         mHeadBannerView = LayoutInflater.from(getActivity()).inflate(R.layout.layout_banner, (ViewGroup) mRecyclerView.getParent(), false);
         mBannerView = (BannerView) mHeadBannerView.findViewById(R.id.bannerView);
         mAdapter.addHeaderView(mHeadBannerView);
+
+        mErrorView = LayoutInflater.from(getActivity()).inflate(R.layout.layout_empty, (ViewGroup) mRecyclerView.getParent(), false);
+        mAdapter.setEmptyView(mErrorView);
+        ImageView imageView = (ImageView) mErrorView.findViewById(R.id.empty_img);
+        imageView.setImageResource(R.drawable.loading_failed);
     }
 
     @Override
@@ -144,14 +150,14 @@ public class HomeRecommendFragment extends RxLazyFragment {
                     @Override
                     public void onError(Throwable e) {
                         Log.e("Ezio", "onError: " + e.toString());
+//
                     }
 
                     @Override
                     public void onNext(HttpResult<RecommendInfo[]> httpResult) {
-                        if (mSwipeRefreshLayout.isRefreshing()){
+                        if (mSwipeRefreshLayout.isRefreshing()) {
                             setRefreshing(false);
                         }
-
                         //加入轮播
                         addBanner(mBannerInfoList);
                         //...
