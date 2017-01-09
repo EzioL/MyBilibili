@@ -5,10 +5,12 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
+
     <com.ezio.bilibili.widget.banner.BannerView
         android:id="@+id/bannerView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
     </com.ezio.bilibili.widget.banner.BannerView>
+
 </LinearLayout>

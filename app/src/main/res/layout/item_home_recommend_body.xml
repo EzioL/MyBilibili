@@ -93,8 +93,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:padding="@dimen/card_title_margin"
-            android:paddingBottom="@dimen/default_general_margin"
-            android:visibility="gone">
+            android:visibility="gone"
+            android:paddingBottom="@dimen/default_general_margin">
 
             <TextView
                 android:id="@+id/item_live_up"
@@ -108,7 +108,7 @@
 
 
             <TextView
-                android:id="@+id/item_live_online"
+                android:id="@+id/item_live_online_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"

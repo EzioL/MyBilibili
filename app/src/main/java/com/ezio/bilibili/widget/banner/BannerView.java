@@ -64,8 +64,7 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
         mContext = context;
         LayoutInflater.from(context).inflate(R.layout.layout_custom_banner, this);
         ButterKnife.bind(this);
-//        viewPager = (ViewPager) findViewById(R.id.layout_banner_viewpager);
-        Log.e("Ezio", "BannerView: " + viewPager.getVisibility());
+
     }
 
     /**
@@ -115,6 +114,7 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
         }
 
         //初始化与个数相同的指示器点
+
         for (int i = 0; i < pointSize; i++) {
             View dot = new View(getContext());
             dot.setBackgroundResource(unSelcetRes);
@@ -127,6 +127,8 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
         }
 
         points.getChildAt(0).setBackgroundResource(selectRes);
+
+
         imageViewList = new ArrayList<>();
         for (int i = 0; i < bannerList.size(); i++) {
             ImageView mImageView = new ImageView(getContext());
@@ -141,6 +143,7 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
         }
 
         //监听图片轮播，改变指示器状态
+
         viewPager.clearOnPageChangeListeners();
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
 
@@ -177,13 +180,17 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
             }
         });
 
+
         BannerAdapter bannerAdapter = new BannerAdapter(imageViewList);
         viewPager.setAdapter(bannerAdapter);
         bannerAdapter.notifyDataSetChanged();
         bannerAdapter.setmViewPagerOnItemClickListener(this);
 
         //图片开始轮播
+
         startScroll();
+
+
     }
 
     private boolean isStopScroll = false;
@@ -244,8 +251,8 @@ public class BannerView extends RelativeLayout implements BannerAdapter.ViewPage
     @Override
     public void onItemClick() {
         Intent intent = new Intent(mContext, BrowserActivity.class);
-        intent.putExtra("url",  bannerList.get(currrentPos).getLink());
-        intent.putExtra("title",  bannerList.get(currrentPos).getTitle());
+        intent.putExtra("url", bannerList.get(currrentPos).getLink());
+        intent.putExtra("title", bannerList.get(currrentPos).getTitle());
         mContext.startActivity(intent);
     }
 }

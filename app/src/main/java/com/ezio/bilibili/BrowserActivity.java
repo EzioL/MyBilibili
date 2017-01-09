@@ -1,39 +1,29 @@
 package com.ezio.bilibili;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.support.design.widget.AppBarLayout;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
-import android.webkit.JsResult;
-import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
+import android.widget.ProgressBar;
 
 import com.ezio.bilibili.base.RxBaseActivity;
-import com.ezio.bilibili.widget.ProgressWebView;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class BrowserActivity extends RxBaseActivity {
 
-
     @Bind(R.id.toolbar)
     Toolbar mToolbar;
-    @Bind(R.id.app_bar_layout)
-    AppBarLayout mAppBarLayout;
     @Bind(R.id.webView)
-    ProgressWebView mWebView;
-
+    WebView mWebView;
     private String url, mTitle;
 
     @Override

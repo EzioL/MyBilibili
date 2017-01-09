@@ -1,5 +1,6 @@
 package com.ezio.bilibili.entity.recommend;
 
+import com.chad.library.adapter.base.entity.MultiItemEntity;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
@@ -8,7 +9,27 @@ import java.util.List;
 /**
  * Author：Ezio on 2017/1/3.
  */
-public class RecommendInfo implements Serializable {
+public class RecommendInfo implements Serializable, MultiItemEntity {
+    public static final int TYPE_NONE = 0;
+    public static final int TYPE_R_L_B_R = 1;
+    public static final int TYPE_WEB_ACTIVITY = 2;
+    public static final String RECOMMEND = "recommend";
+    public static final String LIVE = "live";
+    public static final String BANGUMI_2 = "bangumi_2";
+    public static final String WEBLINK = "weblink";
+    public static final String REGION = "region";
+    public static final String ACTIVITY = "activity";
+
+    @Override
+    public int getItemType() {
+        if (type.equals(RECOMMEND) || type.equals(LIVE) || type.equals(BANGUMI_2) || type.equals(REGION)) {
+            return TYPE_R_L_B_R;
+        } else if (type.equals(WEBLINK) || type.equals(ACTIVITY)) {
+            return TYPE_WEB_ACTIVITY;
+        }
+        return TYPE_NONE;
+    }
+
 
     /**
      * type : recommend
@@ -63,6 +84,7 @@ public class RecommendInfo implements Serializable {
         this.body = body;
     }
 
+
     public static class HeadBean {
         private String param;
         @SerializedName("goto")
@@ -114,6 +136,29 @@ public class RecommendInfo implements Serializable {
         private int height;
         private String play;
         private String danmaku;
+        /**
+         * up_face : http://i0.hdslb.com/bfs/face/2159751e32fc196afa47f564a00c41cf4806da7d.jpg
+         * up : 星妈克
+         * online : 20889
+         * area : 电子竞技
+         * area_id : 4
+         */
+
+        private String up_face;
+        private String up;
+        private int online;
+        private String area;
+        private int area_id;
+        /**
+         * desc1 : 更新到第1话
+         * status : 2
+         */
+
+        private String desc1;
+        private int status;
+
+
+
 
         public String getTitle() {
             return title;
@@ -185,6 +230,65 @@ public class RecommendInfo implements Serializable {
 
         public void setDanmaku(String danmaku) {
             this.danmaku = danmaku;
+        }
+
+        public String getUp_face() {
+            return up_face;
+        }
+
+        public void setUp_face(String up_face) {
+            this.up_face = up_face;
+        }
+
+        public String getUp() {
+//            if (up == null || up.equals("")) {
+//                return "";
+//            }
+            return up;
+        }
+
+        public void setUp(String up) {
+            this.up = up;
+        }
+
+        public int getOnline() {
+            return online;
+        }
+
+        public void setOnline(int online) {
+            this.online = online;
+        }
+
+        public String getArea() {
+            return area;
+        }
+
+        public void setArea(String area) {
+            this.area = area;
+        }
+
+        public int getArea_id() {
+            return area_id;
+        }
+
+        public void setArea_id(int area_id) {
+            this.area_id = area_id;
+        }
+
+        public String getDesc1() {
+            return desc1;
+        }
+
+        public void setDesc1(String desc1) {
+            this.desc1 = desc1;
+        }
+
+        public int getStatus() {
+            return status;
+        }
+
+        public void setStatus(int status) {
+            this.status = status;
         }
     }
 }

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:gravity="center_horizontal"
+              android:paddingBottom="@dimen/default_general_margin"
+              android:orientation="vertical">
+
+    <include layout="@layout/item_home_recommend_head"/>
+
+    <ImageView
+        android:id="@+id/image_webLink"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/general_banner_height"/>
+
+    <com.ezio.bilibili.widget.banner.BannerView
+        android:id="@+id/bannerView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+    </com.ezio.bilibili.widget.banner.BannerView>
+</LinearLayout>
