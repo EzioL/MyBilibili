@@ -10,6 +10,9 @@
 
     <ImageView
         android:id="@+id/image_webLink"
+        android:layout_marginLeft="@dimen/default_general_margin"
+        android:layout_marginRight="@dimen/default_general_margin"
+        android:foreground="?attr/selectableItemBackground"
         android:layout_width="match_parent"
         android:layout_height="@dimen/general_banner_height"/>
 

@@ -53,8 +53,9 @@
     <string name="more">更多</string>
     <string name="download">下载</string>
     <string name="to_them">追番</string>
-    <string name="time_line">放送表</string>
-    <string name="index">索引</string>
+    <string name="time_line">时间表</string>
+
+    <string name="index">索 引</string>
     <string name="bangumi_recommend">番剧推荐</string>
     <string name="new_bangumi_serial">新番连载</string>
     <string name="season_new_bangumi">7月新番</string>
@@ -129,7 +130,7 @@
     <string name="section_live">直播</string>
     <string name="section_focus">关注</string>
     <string name="section_more">分区</string>
-    <string name="section_bangumi">番剧</string>
+    <string name="section_bangumi">追番</string>
     <string name="section_discover">发现</string>
     <string name="level_text">LV2</string>
     <string name="vip_message_1">您还不是</string>

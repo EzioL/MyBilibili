@@ -125,7 +125,7 @@ public class RecommendInfo implements Serializable, MultiItemEntity {
         }
     }
 
-    public static class BodyBean {
+    public static class BodyBean implements Serializable {
         private String title;
         private String style;
         private String cover;

@@ -18,13 +18,14 @@
     <dimen name="default_small_padding">8dp</dimen>
     <dimen name="default_tiny_margin">3dp</dimen>
     <dimen name="default_general_margin">10dp</dimen>
+    <dimen name="default_general_drawable_padding">15dp</dimen>
     <dimen name="default_grow_margin">20dp</dimen>
     <dimen name="default_long_margin">30dp</dimen>
     <dimen name="head_image_bg_height">128dp</dimen>
 
     <!--weekday bangumi layout size-->
     <dimen name="weekday_bangumi_head_height">60dp</dimen>
-
+    <dimen name="bangumi_head_height">40dp</dimen>
     <!--load more layout size-->
     <dimen name="load_more_layout_height">50dp</dimen>
     <dimen name="load_more_layout_circle_progress_size">20dp</dimen>

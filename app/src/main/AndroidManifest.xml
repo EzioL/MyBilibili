@@ -35,6 +35,8 @@
             android:name=".BrowserActivity"
             android:screenOrientation="portrait">
         </activity>
+        <activity android:name=".home.video.VideoDetailsActivity">
+        </activity>
     </application>
 
 </manifest>

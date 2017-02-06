@@ -9,7 +9,7 @@ android {
 
     defaultConfig {
         applicationId "com.ezio.bilibili"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 24
         versionCode 1
         versionName "1.0"
@@ -26,7 +26,7 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
-    compile 'com.android.support:design:24.0.0'
+    compile 'com.android.support:design:24.2.1'
     compile 'com.android.support:cardview-v7:24.0.0'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.jakewharton:butterknife:7.0.1'
@@ -45,5 +45,22 @@ dependencies {
     compile 'com.flyco.tablayout:FlycoTabLayout_Lib:2.1.0@aar'
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
     compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.7.6'
+
+    // required, enough for most devices.
+    compile 'tv.danmaku.ijk.media:ijkplayer-java:0.7.6'
+    compile 'tv.danmaku.ijk.media:ijkplayer-armv7a:0.7.6'
+    // Other ABIs: optional
+    compile 'tv.danmaku.ijk.media:ijkplayer-armv5:0.7.6'
+    compile 'tv.danmaku.ijk.media:ijkplayer-arm64:0.7.6'
+    compile 'tv.danmaku.ijk.media:ijkplayer-x86:0.7.6'
+    compile 'tv.danmaku.ijk.media:ijkplayer-x86_64:0.7.6'
+    // ExoPlayer as IMediaPlayer: optional, experimental
+    compile 'tv.danmaku.ijk.media:ijkplayer-exo:0.7.6'
+
+    compile 'com.github.ctiao:DanmakuFlameMaster:0.6.2'
+    compile 'com.github.ctiao:ndkbitmap-armv7a:0.6.2'
+    // Other ABIs: optional
+    compile 'com.github.ctiao:ndkbitmap-armv5:0.6.2'
+    compile 'com.github.ctiao:ndkbitmap-x86:0.6.2'
 
 }

@@ -1,23 +1,30 @@
 package com.ezio.bilibili.adapter;
 
 import android.content.Intent;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.listener.OnItemChildClickListener;
+import com.chad.library.adapter.base.listener.OnItemClickListener;
+import com.chad.library.adapter.base.listener.SimpleClickListener;
 import com.ezio.bilibili.BrowserActivity;
 import com.ezio.bilibili.R;
 import com.ezio.bilibili.entity.recommend.RecommendInfo;
+import com.ezio.bilibili.home.video.VideoDetailsActivity;
 import com.ezio.bilibili.widget.banner.BannerEntity;
 import com.ezio.bilibili.widget.banner.BannerView;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,7 +102,7 @@ public class HomeRecommendAdapter extends BaseMultiItemQuickAdapter<RecommendInf
     }
 
 
-    private void initRLBR(BaseViewHolder baseViewHolder, RecommendInfo recommendInfo) {
+    private void initRLBR(BaseViewHolder baseViewHolder, final RecommendInfo recommendInfo) {
 
         baseViewHolder.setText(R.id.item_type_tv, recommendInfo.getHead().getTitle())
                 .setVisible(R.id.item_type_rank_btn, false)
@@ -119,7 +126,16 @@ public class HomeRecommendAdapter extends BaseMultiItemQuickAdapter<RecommendInf
         recyclerView.setLayoutManager(new GridLayoutManager(mContext, 2));
         RLRAdapter adapter = new RLRAdapter(recommendInfo.getBody(), recommendInfo.getType());
         recyclerView.setAdapter(adapter);
-
+        recyclerView.addOnItemTouchListener(new OnItemChildClickListener() {
+            @Override
+            public void onSimpleItemChildClick(BaseQuickAdapter baseQuickAdapter, View view, int i) {
+               // Toast.makeText(mContext, "text"+i, Toast.LENGTH_SHORT).show();
+                RecommendInfo.BodyBean bean = recommendInfo.getBody().get(i);
+                Intent intent  = new Intent(mContext, VideoDetailsActivity.class);
+                intent.putExtra("data",(Serializable) bean);
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
@@ -157,6 +173,7 @@ public class HomeRecommendAdapter extends BaseMultiItemQuickAdapter<RecommendInf
                         .setText(R.id.video_play_num, bodyBean.getPlay())
                         .setText(R.id.video_review_count, bodyBean.getDanmaku());
             }
+           baseViewHolder.addOnClickListener(R.id.card_view);
 
         }
     }

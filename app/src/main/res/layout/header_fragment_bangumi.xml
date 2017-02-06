@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:orientation="vertical"
+              android:paddingBottom="@dimen/default_general_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/card_view_background"
+        android:padding="@dimen/default_general_margin">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_jp_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_jp"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/bangumi_home_index_jp_bg"/>
+
+            <ImageView
+                android:id="@+id/img_jp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/img_jp_bg"
+                android:layout_marginLeft="@dimen/default_small_padding"
+                android:src="@drawable/bangumi_home_index_jp_ic"/>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/img_cn_bg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@+id/img_cn"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/bangumi_home_index_cn_bg"/>
+
+            <ImageView
+                android:id="@+id/img_cn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@+id/img_cn_bg"
+                android:layout_marginLeft="@dimen/default_small_padding"
+                android:src="@drawable/bangumi_home_index_cn_ic"/>
+        </RelativeLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="0.5dp"
+
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:foreground="?attr/selectableItemBackground"
+            android:background="@color/card_view_background"
+            android:layout_height="@dimen/bangumi_head_height">
+            <TextView
+                android:text="@string/time_line"
+                android:gravity="center"
+                android:textSize="@dimen/default_small_text_size"
+                android:drawablePadding="@dimen/default_general_drawable_padding"
+                android:drawableLeft="@drawable/bangumi_follow_ic_timeline"
+                android:layout_width="wrap_content"
+                android:textColor="@color/font_normal"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:layout_marginLeft="0.3dp"
+            android:foreground="?attr/selectableItemBackground"
+            android:background="@color/card_view_background"
+            android:layout_height="@dimen/bangumi_head_height">
+            <TextView
+                android:text="@string/index"
+                android:textSize="@dimen/default_small_text_size"
+                android:gravity="center"
+                android:textColor="@color/font_normal"
+                android:drawablePadding="@dimen/default_general_drawable_padding"
+                android:drawableLeft="@drawable/bangumi_follow_ic_index"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>
